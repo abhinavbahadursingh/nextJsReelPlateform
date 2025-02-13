@@ -21,7 +21,7 @@ export async function connectToDatabase() {
 
     if(!cached.promise){
         const opts = {
-            bufferComands: true,
+            bufferCommands: true,
             maxPoolSize: 10
         }
         

@@ -11,22 +11,18 @@ export interface IUser {
 
 const userSchema = new Schema<IUser>(
     {
-        email:{
+        email: {
             type: String,
             required: true,
             unique: true
         },
-        password:{
+        password: {
             type: String,
             required: true,
-        },
-        id: {
-            type: mongoose.Types.ObjectId,
-            unique: true
         },
     },
-    {timestamps: true}
-) 
+    { timestamps: true }
+);
 
 userSchema.pre("save" , async function (next) {
     if(this.isModified("password")){
@@ -35,4 +31,6 @@ userSchema.pre("save" , async function (next) {
     next()
 });
 
-const User = models?.User || model<IUser>("User" , userSchema) 
+const User = models?.User || model<IUser>("User" , userSchema);
+
+export default User;
